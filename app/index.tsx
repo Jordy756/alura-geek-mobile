@@ -1,14 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-export const App = () => {
+export default function Index() {
   return (
     <View style={styles.container}>
-      <Text>Hola mundo</Text>
-      <StatusBar style="auto" />
+      <Text>Hola sdfsdfg</Text>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
