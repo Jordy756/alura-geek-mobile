@@ -1,11 +1,11 @@
-import { Stack } from 'expo-router';
+import Header from '@components/Header';
 import { StatusBar } from 'expo-status-bar';
 
 const RootLayout = () => {
   return (
     <>
       <StatusBar style="auto" />
-      <Stack screenOptions={{ headerShown: false }} />
+      <Header />
     </>
   );
 };

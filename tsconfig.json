@@ -11,10 +11,10 @@
       "@utils/*": ["src/shared/utils/*"],
       "@constants/*": ["src/shared/constants/*"],
       "@types/*": ["src/shared/types/*"],
-      "@features/*": ["src/features/*"],
-      "@icons/*": ["src/assets/icons/*"],
+      "@icons/*": ["src/shared/components/icons/*"],
       "@images/*": ["src/assets/images/*"],
-      "@fonts/*": ["src/assets/fonts/*"]
+      "@fonts/*": ["src/assets/fonts/*"],
+      "@features/*": ["src/features/*"]
     }
   }
 }
