@@ -12,19 +12,17 @@ const Header = () => {
     <Stack
       screenOptions={{
         header: () => (
-          <SafeAreaView style={styles.header} edges={['top']}>
-            <View style={styles.headerContent}>
-              <AluraGeekLogo />
-              <View style={styles.headerActions}>
-                <Link asChild href="/login">
-                  <Button variant="secondary" text="Login" />
-                </Link>
-                <Pressable onPress={() => console.log('Hola')}>
-                  <SearchIcon />
-                </Pressable>
-              </View>
+          <View style={styles.header}>
+            <AluraGeekLogo />
+            <View style={styles.headerActions}>
+              <Link asChild href="/login">
+                <Button variant="secondary" text="Login" />
+              </Link>
+              <Pressable onPress={() => console.log('Hola')}>
+                <SearchIcon />
+              </Pressable>
             </View>
-          </SafeAreaView>
+          </View>
         )
       }}
     />
@@ -33,15 +31,13 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: globalStyles.neutral50,
-    padding: 16,
-    elevation: 0
-  },
-  headerContent: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    gap: 16
+    gap: 16,
+    backgroundColor: globalStyles.neutral50,
+    padding: 16,
+    elevation: 0
   },
   headerActions: {
     flexDirection: 'row',
