@@ -1,9 +1,7 @@
-import { useState } from 'react';
-
 import { globalStyles } from '@constants/global-styles.constants';
-import { useController, useFormContext } from 'react-hook-form';
+import { useInput } from '@hooks/use-input.hook';
 import { StyleSheet, Text, TextInput, type TextInputProps, View } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 
 interface InputProps extends Omit<TextInputProps, 'value' | 'onChangeText'> {
   name: string;
@@ -11,33 +9,7 @@ interface InputProps extends Omit<TextInputProps, 'value' | 'onChangeText'> {
 }
 
 const Input = ({ label, name, ...rest }: InputProps) => {
-  const { control } = useFormContext();
-  const [isFocused, setIsFocused] = useState(false);
-
-  const {
-    field: { onChange, onBlur, value },
-    fieldState: { error }
-  } = useController({
-    name,
-    control
-  });
-
-  const shouldFloat = isFocused || value;
-  const animatedValue = useSharedValue(shouldFloat ? 1 : 0);
-
-  animatedValue.value = withTiming(shouldFloat ? 1 : 0, { duration: 200 });
-
-  const labelStyle = useAnimatedStyle(() => ({
-    top: animatedValue.value * -13.5 + 12.5,
-    fontSize: animatedValue.value * -3.2 + 16
-  }));
-
-  const handleFocus = () => setIsFocused(true);
-
-  const handleBlur = () => {
-    setIsFocused(false);
-    onBlur();
-  };
+  const { value, error, labelStyle, onChange, handleBlur, handleFocus } = useInput(name);
 
   return (
     <View style={styles.inputBox}>
