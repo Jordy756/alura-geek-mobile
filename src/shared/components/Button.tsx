@@ -1,4 +1,4 @@
-import { globalStyles } from '@constants/global-styles';
+import { globalStyles } from '@constants/global-styles.constants';
 import { Pressable, StyleSheet, Text, TextStyle, ViewStyle } from 'react-native';
 
 interface ButtonProps {

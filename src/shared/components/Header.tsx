@@ -1,11 +1,10 @@
 import AluraGeekLogo from '@components/AluraGeekLogo';
 import Button from '@components/Button';
-import { globalStyles } from '@constants/global-styles';
+import { globalStyles } from '@constants/global-styles.constants';
 import SearchIcon from '@icons/SearchIcon';
 import { Stack } from 'expo-router';
 import { Link } from 'expo-router';
 import { Pressable, StyleSheet, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Header = () => {
   return (

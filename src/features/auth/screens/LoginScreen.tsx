@@ -1,25 +1,26 @@
-import Button from '@components/Button';
-import Input from '@components/Input';
-import { globalStyles } from '@constants/global-styles';
-import { StyleSheet, View } from 'react-native';
+import { globalStyles } from '@constants/global-styles.constants';
+import LoginForm from '@features/auth/components/LoginForm';
+import { StyleSheet, Text, View } from 'react-native';
 
 const LoginScreen = () => {
   return (
-    <View style={styles.container}>
-      <Input label="email" keyBoardType="email-address" />
-      <Input label="password" />
-      <Button variant="primary" text="Login" onPress={() => {}} />
+    <View style={styles.loginScreen}>
+      <Text style={styles.title}>Login</Text>
+      <LoginForm />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  loginScreen: {
     padding: 16,
     flex: 1,
     backgroundColor: globalStyles.neutral100,
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     gap: 16
+  },
+  title: {
+    textAlign: 'center'
   }
 });
 

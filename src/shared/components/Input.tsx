@@ -1,23 +1,42 @@
-import { globalStyles } from '@constants/global-styles';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { globalStyles } from '@constants/global-styles.constants';
+import { useController, useFormContext } from 'react-hook-form';
+import { StyleSheet, Text, TextInput, type TextInputProps, View } from 'react-native';
 
-interface InputProps {
+interface InputProps extends Omit<TextInputProps, 'value' | 'onChangeText'> {
+  name: string;
   label: string;
-  keyBoardType?: 'default' | 'email-address' | 'numeric' | 'phone-pad';
 }
 
-const Input = ({ label, keyBoardType = 'default' }: InputProps) => {
+const Input = ({ label, name, ...rest }: InputProps) => {
+  const { control } = useFormContext();
+
+  const {
+    field: { onChange, onBlur, value },
+    fieldState: { error }
+  } = useController({
+    name,
+    control
+  });
+
   return (
     <View style={styles.inputBox}>
-      <Text style={styles.label}>{label}</Text>
-      <TextInput keyboardType={keyBoardType} style={styles.input} />
+      {/* <Text style={styles.label}>{label}</Text> */}
+      <TextInput
+        style={[styles.input, error && styles.inputError]}
+        onChangeText={onChange}
+        onBlur={onBlur}
+        value={value}
+        {...rest}
+      />
+      {error && <Text style={styles.errorText}>{error.message}</Text>}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   inputBox: {
-    position: 'relative'
+    position: 'relative',
+    gap: 4
   },
   label: {
     position: 'absolute',
@@ -40,6 +59,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: globalStyles.neutral400,
     borderRadius: globalStyles.borderRadiusOut
+  },
+  inputError: {
+    borderBottomColor: globalStyles.error500
+  },
+  errorText: {
+    color: globalStyles.error500,
+    fontSize: 12,
+    marginHorizontal: 4
   }
 });
 
