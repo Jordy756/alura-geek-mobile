@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
   title: {
     textAlign: 'center',
     fontFamily: globalStyles.fontFamilySemiBold,
-    fontSize: globalStyles.textSizeH3
+    fontSize: globalStyles.textSizeH3,
+    color: globalStyles.neutral900
   }
 });
 

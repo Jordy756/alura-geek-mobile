@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingBottom: 5,
     fontSize: globalStyles.textSizeBase,
+    color: globalStyles.neutral900,
     backgroundColor: globalStyles.neutral50,
     borderBottomWidth: 1,
     borderBottomColor: globalStyles.neutral400,
