@@ -2,29 +2,22 @@ import AluraGeekLogo from '@components/AluraGeekLogo';
 import Button from '@components/Button';
 import { globalStyles } from '@constants/global-styles.constants';
 import SearchIcon from '@icons/SearchIcon';
-import { Stack } from 'expo-router';
 import { Link } from 'expo-router';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 const Header = () => {
   return (
-    <Stack
-      screenOptions={{
-        header: () => (
-          <View style={styles.header}>
-            <AluraGeekLogo />
-            <View style={styles.headerActions}>
-              <Link asChild href="/login">
-                <Button variant="secondary" text="Login" />
-              </Link>
-              <Pressable onPress={() => console.log('Hola')}>
-                <SearchIcon />
-              </Pressable>
-            </View>
-          </View>
-        )
-      }}
-    />
+    <View style={styles.header}>
+      <AluraGeekLogo />
+      <View style={styles.headerActions}>
+        <Link asChild href="/login">
+          <Button variant="secondary" text="Login" />
+        </Link>
+        <Pressable onPress={() => console.log('Hola')}>
+          <SearchIcon />
+        </Pressable>
+      </View>
+    </View>
   );
 };
 

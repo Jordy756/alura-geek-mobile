@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: globalStyles.textSizeBase,
-    fontWeight: globalStyles.textWeight,
+    fontFamily: globalStyles.fontFamilyRegular,
     textAlign: 'center'
   }
 });

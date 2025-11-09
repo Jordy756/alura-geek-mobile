@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     color: globalStyles.neutral600,
     backgroundColor: globalStyles.neutral50,
-    pointerEvents: 'none'
+    pointerEvents: 'none',
+    fontFamily: globalStyles.fontFamilyLight
   },
   input: {
     paddingTop: 25,
@@ -50,7 +51,8 @@ const styles = StyleSheet.create({
     backgroundColor: globalStyles.neutral50,
     borderBottomWidth: 1,
     borderBottomColor: globalStyles.neutral400,
-    borderRadius: globalStyles.borderRadiusOut
+    borderRadius: globalStyles.borderRadiusOut,
+    fontFamily: globalStyles.fontFamilyRegular
   },
   inputError: {
     borderBottomColor: globalStyles.error500
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
   errorText: {
     color: globalStyles.error500,
     fontSize: 12,
-    fontWeight: globalStyles.textWeight,
+    fontFamily: globalStyles.fontFamilyLight,
     marginHorizontal: 4
   }
 });

@@ -1,15 +1,15 @@
 export const globalStyles = {
   // Typography
-  fontFamily: "'Raleway', 'Open Sans', sans-serif, system-ui",
-  textSizeMega: { min: 32.432, base: 61.04 }, // clamp(2.027rem, 5vw + 1rem, 3.815rem)
-  textSizeHuge: { min: 28.832, base: 48.832 }, // clamp(1.802rem, 4vw + 1rem, 3.052rem)
-  textSizeXLarge: { min: 25.632, base: 39.056 }, // clamp(1.602rem, 3vw + 1rem, 2.441rem)
-  textSizeLarge: { min: 22.784, base: 31.248 }, // clamp(1.424rem, 2.5vw + 1rem, 1.953rem)
-  textSizeMedium: { min: 20.256, base: 25.008 }, // clamp(1.266rem, 2vw + 1rem, 1.563rem)
-  textSizeSmall: { min: 18, base: 20 }, // clamp(1.125rem, 1.5vw + 1rem, 1.25rem)
+  fontFamilyLight: 'Raleway_300Light',
+  fontFamilyRegular: 'Raleway_400Regular',
+  fontFamilySemiBold: 'Raleway_600SemiBold',
+  textSizeH1: 32.432,
+  textSizeH2: 28.832,
+  textSizeH3: 25.632,
+  textSizeH4: 22.784,
+  textSizeH5: 20.256,
+  textSizeH6: 18,
   textSizeBase: 16,
-  titleWeight: 400,
-  textWeight: 300,
 
   // Neutral Colors
   neutral50: '#fbfbfc',

@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const LoginScreen = () => {
   return (
     <View style={styles.loginScreen}>
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Iniciar Sesión</Text>
       <LoginForm />
     </View>
   );
@@ -20,7 +20,9 @@ const styles = StyleSheet.create({
     gap: 16
   },
   title: {
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: globalStyles.fontFamilySemiBold,
+    fontSize: globalStyles.textSizeH3
   }
 });
 
