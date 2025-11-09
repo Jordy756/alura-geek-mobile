@@ -8,6 +8,8 @@ export const globalStyles = {
   textSizeMedium: { min: 20.256, base: 25.008 }, // clamp(1.266rem, 2vw + 1rem, 1.563rem)
   textSizeSmall: { min: 18, base: 20 }, // clamp(1.125rem, 1.5vw + 1rem, 1.25rem)
   textSizeBase: 16,
+  titleWeight: 400,
+  textWeight: 300,
 
   // Neutral Colors
   neutral50: '#fbfbfc',
@@ -77,5 +79,5 @@ export const globalStyles = {
   boxShadow: '0px 6px 12px 0px rgba(0, 0, 0, 0.1)',
   boxShadowPressed: '0px 6px 12px 0px rgba(0, 0, 0, 0.25)',
   borderRadiusOut: 5,
-  borderRadiusIn: 2.5,
+  borderRadiusIn: 2.5
 } as const;

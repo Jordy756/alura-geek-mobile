@@ -18,8 +18,8 @@ const LoginForm = () => {
   return (
     <FormProvider {...methods}>
       <View style={styles.loginForm}>
-        <Input name="email" label="email" keyboardType="email-address" />
-        <Input name="password" label="password" secureTextEntry />
+        <Input name="email" label="Correo" keyboardType="email-address" />
+        <Input name="password" label="Contraseña" secureTextEntry />
         <Button variant="primary" text="Login" onPress={methods.handleSubmit(onSubmit)} />
       </View>
     </FormProvider>
