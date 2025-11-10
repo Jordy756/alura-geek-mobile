@@ -49,7 +49,7 @@ const Footer = () => {
         <AluraGeekLogo />
         <View style={styles.linkListContainer}>
           {links.map((item, index) => (
-            <Link key={index} href={item.link} asChild>
+            <Link key={index} href={item.link}>
               <Text style={styles.linkText}>{item.label}</Text>
             </Link>
           ))}

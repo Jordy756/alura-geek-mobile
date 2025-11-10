@@ -1,6 +1,6 @@
 import Footer from '@components/Footer';
 import Header from '@components/Header';
-import HomeScreen from '@features/home/screens/HomeScreen';
+import HomeScreen from '@features/articles/screens/HomeScreen';
 import { ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
