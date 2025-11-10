@@ -5,7 +5,7 @@ import Button from '@components/Button';
 import Input from '@components/Input';
 import { globalStyles } from '@constants/global-styles.constants';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { contactSchema } from '@schemas/contact.scheme';
+import { contactSchema } from '@schemas/contact.schema';
 import { Link } from 'expo-router';
 import { FormProvider, useForm } from 'react-hook-form';
 import { StyleSheet, Text, View } from 'react-native';

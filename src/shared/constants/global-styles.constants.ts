@@ -75,6 +75,13 @@ export const globalStyles = {
   info800: '#047d98',
   info900: '#035465',
 
+  // Overlay Colors
+  overlay100: 'rgba(0, 0, 0, 0.1)',
+  overlay200: 'rgba(0, 0, 0, 0.2)',
+  overlay300: 'rgba(0, 0, 0, 0.3)',
+  overlay400: 'rgba(0, 0, 0, 0.4)',
+  overlay500: 'rgba(0, 0, 0, 0.5)',
+
   // Effects & Layout
   boxShadow: '0px 6px 12px 0px rgba(0, 0, 0, 0.1)',
   boxShadowPressed: '0px 6px 12px 0px rgba(0, 0, 0, 0.25)',
