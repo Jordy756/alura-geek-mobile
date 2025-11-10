@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
     gap: 16,
     backgroundColor: globalStyles.neutral50,
     padding: 16,
-    elevation: 0
+    borderBottomWidth: 1,
+    borderBottomColor: globalStyles.neutral200
   },
   headerActions: {
     flexDirection: 'row',

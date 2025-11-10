@@ -1,20 +1,21 @@
 import { globalStyles } from '@constants/global-styles.constants';
 import { useInput } from '@hooks/use-input.hook';
-import { StyleSheet, Text, TextInput, type TextInputProps, View } from 'react-native';
+import { type StyleProp, StyleSheet, Text, TextInput, type TextInputProps, type TextStyle, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 interface InputProps extends Omit<TextInputProps, 'value' | 'onChangeText'> {
   name: string;
   label: string;
+  style?: StyleProp<TextStyle>;
 }
 
-const Input = ({ label, name, ...rest }: InputProps) => {
+const Input = ({ label, name, style, ...rest }: InputProps) => {
   const { value, error, labelStyle, onChange, handleBlur, handleFocus } = useInput(name);
 
   return (
     <View style={styles.inputBox}>
       <TextInput
-        style={[styles.input, error && styles.inputError]}
+        style={[styles.input, error && styles.inputError, style]}
         onChangeText={onChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
@@ -39,7 +40,6 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     color: globalStyles.neutral600,
-    backgroundColor: globalStyles.neutral50,
     pointerEvents: 'none',
     fontFamily: globalStyles.fontFamilyLight
   },
@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: globalStyles.neutral400,
     borderRadius: globalStyles.borderRadiusOut,
-    fontFamily: globalStyles.fontFamilyRegular
+    fontFamily: globalStyles.fontFamilyRegular,
+    textAlignVertical: 'top'
   },
   inputError: {
     borderBottomColor: globalStyles.error500

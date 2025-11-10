@@ -13,8 +13,9 @@ const LoginScreen = () => {
 
 const styles = StyleSheet.create({
   loginScreen: {
-    padding: 16,
     flex: 1,
+    paddingVertical: 128,
+    paddingHorizontal: 16,
     backgroundColor: globalStyles.neutral100,
     justifyContent: 'center',
     gap: 16

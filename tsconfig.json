@@ -10,6 +10,7 @@
       "@context/*": ["src/shared/context/*"],
       "@utils/*": ["src/shared/utils/*"],
       "@constants/*": ["src/shared/constants/*"],
+      "@schemas/*": ["src/shared/schemas/*"],
       "@types/*": ["src/shared/types/*"],
       "@icons/*": ["src/shared/components/icons/*"],
       "@images/*": ["src/assets/images/*"],
