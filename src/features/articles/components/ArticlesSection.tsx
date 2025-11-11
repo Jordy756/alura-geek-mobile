@@ -1,14 +1,22 @@
 import ArrowRightIcon from '@components/icons/ArrowRightIcon';
 import { globalStyles } from '@constants/global-styles.constants';
 import ArticleCard from '@features/articles/components/ArticleCard';
+import { useArticles } from '@features/articles/hooks/use-articles.hook';
 import { Link } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-const ArticlesSection = () => {
+interface ArticlesSectionProps {
+  categoryId: string;
+  categoryName: string;
+}
+
+const ArticlesSection = ({ categoryId, categoryName }: ArticlesSectionProps) => {
+  const { articles } = useArticles(categoryId);
+  console.log({ categoryId, articles });
   return (
     <View style={styles.articleSection}>
       <View style={styles.sectionHeader}>
-        <Text style={styles.sectionTitle}>Consolas</Text>
+        <Text style={styles.sectionTitle}>{categoryName}</Text>
         <Link href={'#'} asChild>
           <Pressable style={styles.viewAllLink}>
             <Text style={styles.viewAllText}>Ver todo</Text>
@@ -17,11 +25,9 @@ const ArticlesSection = () => {
         </Link>
       </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.articlesContainer}>
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
+        {articles.data.map((article) => (
+          <ArticleCard key={article._id} article={article} />
+        ))}
       </ScrollView>
     </View>
   );

@@ -1,22 +1,23 @@
 import { globalStyles } from '@constants/global-styles.constants';
+import { Article } from '@features/articles/entities/article.entity';
 import { Link } from 'expo-router';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
-const ArticleCard = () => {
+interface ArticleCardProps {
+  article: Article;
+}
+
+const ArticleCard = ({ article }: ArticleCardProps) => {
+  const { name, price, image } = article;
+
   return (
     <View style={styles.articleCard}>
       <View style={styles.articleImageContainer}>
-        <Image
-          source={{
-            uri: 'https://res.cloudinary.com/dygwpgeq9/image/upload/v1746146270/article_img_002_i8h7y2.webp'
-          }}
-          resizeMode="cover"
-          style={styles.articleImage}
-        />
+        <Image source={{ uri: image }} resizeMode="cover" style={styles.articleImage} />
       </View>
       <View style={styles.articleInfoContainer}>
-        <Text style={styles.articleName}>Name</Text>
-        <Text style={styles.articlePrice}>$99.99</Text>
+        <Text style={styles.articleName}>{name}</Text>
+        <Text style={styles.articlePrice}>${price}</Text>
         <Link href={'#'} asChild>
           <Pressable style={styles.viewProductLink}>
             <Text style={styles.viewProductText}>Ver producto</Text>
