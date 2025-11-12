@@ -1,5 +1,5 @@
 import Button from '@components/Button';
-import { globalStyles } from '@constants/global-styles.constants';
+import { globalStyles } from '@constants/globalStyles';
 import HeroImage from '@images/hero.webp';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 

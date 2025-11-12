@@ -1,6 +1,6 @@
 import Button from '@components/Button';
 import Input from '@components/Input';
-import { loginSchema } from '@features/auth/schemas/login.schema';
+import { loginSchema } from '@features/auth/schemas/login';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { StyleSheet, View } from 'react-native';

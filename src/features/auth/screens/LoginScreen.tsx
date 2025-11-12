@@ -1,4 +1,4 @@
-import { globalStyles } from '@constants/global-styles.constants';
+import { globalStyles } from '@constants/globalStyles';
 import LoginForm from '@features/auth/components/LoginForm';
 import { StyleSheet, Text, View } from 'react-native';
 

@@ -1,6 +1,6 @@
 import AluraGeekLogo from '@components/AluraGeekLogo';
 import Button from '@components/Button';
-import { globalStyles } from '@constants/global-styles.constants';
+import { globalStyles } from '@constants/globalStyles';
 import SearchIcon from '@icons/SearchIcon';
 import { Link } from 'expo-router';
 import { Pressable, StyleSheet, View } from 'react-native';

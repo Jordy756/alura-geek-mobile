@@ -1,7 +1,7 @@
 import ArrowRightIcon from '@components/icons/ArrowRightIcon';
-import { globalStyles } from '@constants/global-styles.constants';
+import { globalStyles } from '@constants/globalStyles';
 import ArticleCard from '@features/articles/components/ArticleCard';
-import { useArticles } from '@features/articles/hooks/use-articles.hook';
+import { useArticles } from '@features/articles/hooks/useArticles';
 import { Link } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
@@ -12,7 +12,6 @@ interface ArticlesSectionProps {
 
 const ArticlesSection = ({ categoryId, categoryName }: ArticlesSectionProps) => {
   const { articles } = useArticles(categoryId);
-  console.log({ categoryId, articles });
   return (
     <View style={styles.articleSection}>
       <View style={styles.sectionHeader}>

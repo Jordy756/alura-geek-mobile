@@ -1,5 +1,5 @@
-import { globalStyles } from '@constants/global-styles.constants';
-import { useInput } from '@hooks/use-input.hook';
+import { globalStyles } from '@constants/globalStyles';
+import { useInput } from '@hooks/useInput';
 import { type StyleProp, StyleSheet, Text, TextInput, type TextInputProps, type TextStyle, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 

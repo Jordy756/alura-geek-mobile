@@ -1,5 +1,5 @@
-import { globalStyles } from '@constants/global-styles.constants';
-import { Article } from '@features/articles/entities/article.entity';
+import { globalStyles } from '@constants/globalStyles';
+import { Article } from '@features/articles/entities/Article';
 import { Link } from 'expo-router';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 

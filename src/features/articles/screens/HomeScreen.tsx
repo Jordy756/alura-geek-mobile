@@ -1,7 +1,7 @@
-import { globalStyles } from '@constants/global-styles.constants';
+import { globalStyles } from '@constants/globalStyles';
 import ArticlesSection from '@features/articles/components/ArticlesSection';
 import Hero from '@features/articles/components/Hero';
-import { useCategories } from '@features/articles/hooks/use-categories.hook';
+import { useCategories } from '@features/articles/hooks/useCategories';
 import { StyleSheet, View } from 'react-native';
 
 const HomeScreen = () => {
@@ -9,7 +9,7 @@ const HomeScreen = () => {
   return (
     <View style={styles.homeScreen}>
       <Hero />
-      {categories.map(({ _id: id, name }) => (
+      {categories.data.map(({ _id: id, name }) => (
         <ArticlesSection key={id} categoryId={id} categoryName={name} />
       ))}
     </View>
