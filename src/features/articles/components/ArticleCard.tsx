@@ -31,7 +31,6 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
 const styles = StyleSheet.create({
   articleCard: {
     width: 200,
-    flexGrow: 1,
     gap: 4
   },
   articleImageContainer: {

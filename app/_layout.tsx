@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+import Header from '@components/Header';
 import { Raleway_300Light, Raleway_400Regular, Raleway_600SemiBold, useFonts } from '@expo-google-fonts/raleway';
 import { SplashScreen, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -22,11 +23,7 @@ const RootLayout = () => {
   return (
     <>
       <StatusBar style="auto" />
-      <Stack
-        screenOptions={{
-          headerShown: false
-        }}
-      />
+      <Stack screenOptions={{ header: () => <Header /> }} />
     </>
   );
 };
