@@ -2,10 +2,7 @@ export interface PaginatedMetadata<T> {
   data: T[];
   pagination: {
     currentPage: number;
-    totalPages: number;
-    totalItems: number;
-    itemsPerPage: number;
-    hasNextPage: boolean;
-    hasPreviousPage: boolean;
+    nextPage: number | null;
+    previousPage: number | null;
   };
 }

@@ -11,36 +11,33 @@ export const useCategories = () => {
     data: [],
     pagination: {
       currentPage: 0,
-      totalPages: 0,
-      totalItems: 0,
-      itemsPerPage: 0,
-      hasNextPage: false,
-      hasPreviousPage: false
+      nextPage: null,
+      previousPage: null
     }
   });
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const getAllData = async () => {
+  const getAllData = async (page: number) => {
     setLoading(true);
     setError(null);
     try {
-      const categoriesResponse = await getCategoriesService();
+      // 1. Obtiene esta página de categorías
+      const categoriesResponse = await getCategoriesService(page);
       const categoriesRaw: Category[] = categoriesResponse.data;
-
+      // 2. Artículos en paralelo
       const articlesPromises = categoriesRaw.map(({ _id }) => getArticlesService(_id));
       const articlesResults = await Promise.all(articlesPromises);
-
-      const categoriesWithArticles: PaginatedMetadata<Category> = {
-        data: categoriesRaw.map((category, idx) => ({
-          ...category,
-          articles: articlesResults[idx]
-        })),
+      // 3. Combina datos
+      const categoriesWithArticles: Category[] = categoriesRaw.map((category, idx) => ({
+        ...category,
+        articles: articlesResults[idx]
+      }));
+      // 4. Junta a las anteriores (append)
+      setCategories((prev) => ({
+        data: [...prev.data, ...categoriesWithArticles],
         pagination: categoriesResponse.pagination
-      };
-
-      setCategories(categoriesWithArticles);
+      }));
     } catch (err: any) {
       setError(err?.message ?? 'Error desconocido');
     }
@@ -48,13 +45,19 @@ export const useCategories = () => {
   };
 
   useEffect(() => {
-    getAllData();
+    getAllData(1);
   }, []);
+
+  const loadMoreCategories = () => {
+    if (loading || !categories.pagination.nextPage) return;
+
+    getAllData(categories.pagination.nextPage);
+  };
 
   return {
     categories,
-    pagination: categories,
     loading,
-    error
+    error,
+    loadMoreCategories
   };
 };

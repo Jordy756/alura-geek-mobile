@@ -7,7 +7,9 @@ import { useCategories } from '@features/articles/hooks/useCategories';
 import { SectionList, StyleSheet } from 'react-native';
 
 const HomeScreen = () => {
-  const { categories, loading, error } = useCategories();
+  const { categories, loadMoreCategories, loading, error } = useCategories();
+
+  console.log({ categories });
 
   const sections = categories.data.map((category) => ({
     categoryId: category._id,
@@ -29,6 +31,8 @@ const HomeScreen = () => {
       ListFooterComponent={<Footer />}
       style={styles.articleSection}
       initialNumToRender={3}
+      onEndReached={loadMoreCategories} // <-- aquí la paginación vertical
+      onEndReachedThreshold={0.8}
     />
   );
 };

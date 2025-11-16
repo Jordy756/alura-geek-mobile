@@ -12,8 +12,8 @@ export const useArticles = (categoryId?: string) => {
       totalPages: 0,
       totalItems: 0,
       itemsPerPage: 0,
-      hasNextPage: false,
-      hasPreviousPage: false
+      nextPage: false,
+      previousPage: false
     }
   });
 
