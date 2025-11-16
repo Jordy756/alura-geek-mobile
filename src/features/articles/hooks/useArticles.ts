@@ -9,21 +9,18 @@ export const useArticles = (categoryId?: string) => {
     data: [],
     pagination: {
       currentPage: 0,
-      totalPages: 0,
-      totalItems: 0,
-      itemsPerPage: 0,
-      nextPage: false,
-      previousPage: false
+      nextPage: null,
+      previousPage: null
     }
   });
 
-  const getArticles = async () => {
-    const articles = await getArticlesService(categoryId);
+  const getArticles = async (page: number) => {
+    const articles = await getArticlesService(page, categoryId);
     setArticles(articles);
   };
 
   useEffect(() => {
-    getArticles();
+    getArticles(1);
   }, [categoryId]);
 
   return {

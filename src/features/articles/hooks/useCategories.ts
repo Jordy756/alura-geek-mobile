@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react';
 
 import { PaginatedMetadata } from '@entities/PaginatedMetadata';
 import { Category } from '@features/articles/entities/Category';
+import { getArticlesService } from '@features/articles/services/articles';
 import { getCategoriesService } from '@features/articles/services/categories';
-
-import { getArticlesService } from '../services/articles';
 
 export const useCategories = () => {
   const [categories, setCategories] = useState<PaginatedMetadata<Category>>({
@@ -26,7 +25,7 @@ export const useCategories = () => {
       const categoriesResponse = await getCategoriesService(page);
       const categoriesRaw: Category[] = categoriesResponse.data;
       // 2. Artículos en paralelo
-      const articlesPromises = categoriesRaw.map(({ _id }) => getArticlesService(_id));
+      const articlesPromises = categoriesRaw.map(({ _id }) => getArticlesService(1, _id));
       const articlesResults = await Promise.all(articlesPromises);
       // 3. Combina datos
       const categoriesWithArticles: Category[] = categoriesRaw.map((category, idx) => ({
@@ -54,10 +53,50 @@ export const useCategories = () => {
     getAllData(categories.pagination.nextPage);
   };
 
+  const loadMoreArticles = (categoryId: string) => {
+    console.log({ categoryId });
+    // if (loading) return;
+
+    const category = categories.data.find((cat) => cat._id === categoryId);
+    if (!category || !category.articles?.pagination.nextPage) return;
+
+    const nextPage = category.articles.pagination.nextPage;
+
+    const getMoreArticles = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const articlesResponse = await getArticlesService(nextPage, categoryId);
+        const updatedCategories = categories.data.map((cat) => {
+          if (cat._id === categoryId) {
+            return {
+              ...cat,
+              articles: {
+                data: [...(cat.articles?.data || []), ...articlesResponse.data],
+                pagination: articlesResponse.pagination
+              }
+            };
+          }
+          return cat;
+        });
+        setCategories((prev) => ({
+          ...prev,
+          data: updatedCategories
+        }));
+      } catch (err: any) {
+        setError(err?.message ?? 'Error desconocido');
+      }
+      setLoading(false);
+    };
+
+    getMoreArticles();
+  };
+
   return {
     categories,
     loading,
     error,
-    loadMoreCategories
+    loadMoreCategories,
+    loadMoreArticles
   };
 };

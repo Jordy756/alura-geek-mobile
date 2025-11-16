@@ -7,7 +7,7 @@ import { useCategories } from '@features/articles/hooks/useCategories';
 import { SectionList, StyleSheet } from 'react-native';
 
 const HomeScreen = () => {
-  const { categories, loadMoreCategories, loading, error } = useCategories();
+  const { categories, loading, error, loadMoreCategories, loadMoreArticles } = useCategories();
 
   console.log({ categories });
 
@@ -26,12 +26,12 @@ const HomeScreen = () => {
       renderSectionHeader={({ section }) => (
         <ArticleSectionHeader categoryId={section.categoryId} categoryName={section.title} />
       )}
-      renderItem={({ section }) => <ArticleList articles={section.articles} />}
+      renderItem={({ section }) => <ArticleList articles={section.articles} loadMoreArticles={loadMoreArticles} />}
       ListHeaderComponent={<Hero />}
       ListFooterComponent={<Footer />}
       style={styles.articleSection}
       initialNumToRender={3}
-      onEndReached={loadMoreCategories} // <-- aquí la paginación vertical
+      onEndReached={loadMoreCategories}
       onEndReachedThreshold={0.8}
     />
   );

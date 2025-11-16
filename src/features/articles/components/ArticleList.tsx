@@ -4,9 +4,10 @@ import { FlatList, StyleSheet } from 'react-native';
 
 interface ArticleListProps {
   articles: Article[] | undefined;
+  loadMoreArticles: (categoryId: string) => void;
 }
 
-const ArticleList = ({ articles }: ArticleListProps) => {
+const ArticleList = ({ articles, loadMoreArticles }: ArticleListProps) => {
   if (!articles || articles.length === 0) return null;
 
   return (
@@ -22,6 +23,8 @@ const ArticleList = ({ articles }: ArticleListProps) => {
       initialNumToRender={4}
       maxToRenderPerBatch={4}
       windowSize={3}
+      onEndReached={() => loadMoreArticles(articles[0]._id)}
+      onEndReachedThreshold={0.8}
     />
   );
 };
