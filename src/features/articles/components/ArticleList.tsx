@@ -4,17 +4,10 @@ import { FlatList, StyleSheet } from 'react-native';
 
 interface ArticleListProps {
   articles: Article[] | undefined;
-  loadMoreArticles: (categoryId: string) => void;
+  loadMoreArticles: () => void;
 }
 
 const ArticleList = ({ articles, loadMoreArticles }: ArticleListProps) => {
-  // if (!articles || articles.length === 0) return null;
-  console.log(articles);
-
-  const getHola = () => {
-    console.log('Hola');
-  };
-
   return (
     <FlatList
       horizontal
@@ -24,12 +17,8 @@ const ArticleList = ({ articles, loadMoreArticles }: ArticleListProps) => {
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={styles.articlesContainer}
       nestedScrollEnabled={false}
-      // initialNumToRender={4}
-      // maxToRenderPerBatch={4}
-      // windowSize={3}
-      // onEndReached={() => loadMoreArticles('680b209fc0d13ce41d4f9ce4')}
-      // onEndReachedThreshold={0.8}
-      // ListFooterComponent={<Footer />}
+      onEndReached={loadMoreArticles}
+      onEndReachedThreshold={1}
     />
   );
 };

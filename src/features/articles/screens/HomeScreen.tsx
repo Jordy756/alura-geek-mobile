@@ -24,7 +24,7 @@ const HomeScreen = () => {
       renderSectionHeader={({ section }) => (
         <ArticleSectionHeader categoryId={section.categoryId} categoryName={section.title} />
       )}
-      renderItem={({ section }) => <ArticleList articles={section.articles} loadMoreArticles={loadMoreArticles} />}
+      renderItem={({ section }) => <ArticleList articles={section.articles} loadMoreArticles={() => loadMoreArticles(section.categoryId)} />}
       ListHeaderComponent={<Hero />}
       ListFooterComponent={<Footer />}
       style={styles.articleSection}
