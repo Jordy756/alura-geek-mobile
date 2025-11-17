@@ -9,8 +9,6 @@ import { SectionList, StyleSheet } from 'react-native';
 const HomeScreen = () => {
   const { categories, loading, error, loadMoreCategories, loadMoreArticles } = useCategories();
 
-  console.log({ categories });
-
   const sections = categories.data.map((category) => ({
     categoryId: category._id,
     title: category.name,
@@ -32,7 +30,7 @@ const HomeScreen = () => {
       style={styles.articleSection}
       initialNumToRender={3}
       onEndReached={loadMoreCategories}
-      onEndReachedThreshold={0.8}
+      onEndReachedThreshold={1}
     />
   );
 };

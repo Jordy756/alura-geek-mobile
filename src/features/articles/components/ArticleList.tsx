@@ -8,23 +8,28 @@ interface ArticleListProps {
 }
 
 const ArticleList = ({ articles, loadMoreArticles }: ArticleListProps) => {
-  if (!articles || articles.length === 0) return null;
+  // if (!articles || articles.length === 0) return null;
+  console.log(articles);
+
+  const getHola = () => {
+    console.log('Hola');
+  };
 
   return (
     <FlatList
       horizontal
-      scrollEnabled={true}
       data={articles}
       renderItem={({ item }) => <ArticleCard article={item} />}
-      keyExtractor={(item) => item._id}
+      keyExtractor={(item, index) => item._id + index}
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={styles.articlesContainer}
       nestedScrollEnabled={false}
-      initialNumToRender={4}
-      maxToRenderPerBatch={4}
-      windowSize={3}
-      onEndReached={() => loadMoreArticles(articles[0]._id)}
-      onEndReachedThreshold={0.8}
+      // initialNumToRender={4}
+      // maxToRenderPerBatch={4}
+      // windowSize={3}
+      // onEndReached={() => loadMoreArticles('680b209fc0d13ce41d4f9ce4')}
+      // onEndReachedThreshold={0.8}
+      // ListFooterComponent={<Footer />}
     />
   );
 };

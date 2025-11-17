@@ -1,19 +1,15 @@
 import { useEffect, useState } from 'react';
 
-import { PaginatedMetadata } from '@entities/PaginatedMetadata';
 import { Category } from '@features/articles/entities/Category';
 import { getArticlesService } from '@features/articles/services/articles';
 import { getCategoriesService } from '@features/articles/services/categories';
+import { useCategoriesStore } from '@features/articles/stores/useCategoriesStore';
 
 export const useCategories = () => {
-  const [categories, setCategories] = useState<PaginatedMetadata<Category>>({
-    data: [],
-    pagination: {
-      currentPage: 0,
-      nextPage: null,
-      previousPage: null
-    }
-  });
+  const categories = useCategoriesStore((state) => state.categories);
+  const appendCategories = useCategoriesStore((state) => state.appendCategories);
+  const appendProductsInCategory = useCategoriesStore((state) => state.appendProductsInCategory);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -32,11 +28,8 @@ export const useCategories = () => {
         ...category,
         articles: articlesResults[idx]
       }));
-      // 4. Junta a las anteriores (append)
-      setCategories((prev) => ({
-        data: [...prev.data, ...categoriesWithArticles],
-        pagination: categoriesResponse.pagination
-      }));
+
+      appendCategories(categoriesWithArticles, categoriesResponse.pagination);
     } catch (err: any) {
       setError(err?.message ?? 'Error desconocido');
     }
@@ -54,10 +47,10 @@ export const useCategories = () => {
   };
 
   const loadMoreArticles = (categoryId: string) => {
-    console.log({ categoryId });
-    // if (loading) return;
-
     const category = categories.data.find((cat) => cat._id === categoryId);
+
+    console.log({ category, nextPage: category?.articles?.pagination.nextPage });
+
     if (!category || !category.articles?.pagination.nextPage) return;
 
     const nextPage = category.articles.pagination.nextPage;
@@ -67,22 +60,7 @@ export const useCategories = () => {
       setError(null);
       try {
         const articlesResponse = await getArticlesService(nextPage, categoryId);
-        const updatedCategories = categories.data.map((cat) => {
-          if (cat._id === categoryId) {
-            return {
-              ...cat,
-              articles: {
-                data: [...(cat.articles?.data || []), ...articlesResponse.data],
-                pagination: articlesResponse.pagination
-              }
-            };
-          }
-          return cat;
-        });
-        setCategories((prev) => ({
-          ...prev,
-          data: updatedCategories
-        }));
+        appendProductsInCategory(categoryId, articlesResponse, articlesResponse.pagination);
       } catch (err: any) {
         setError(err?.message ?? 'Error desconocido');
       }
